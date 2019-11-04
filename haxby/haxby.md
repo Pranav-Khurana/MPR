@@ -1,4 +1,4 @@
-## Haxby_Experiment
+# Haxby_Experiment
 
 In the original work, visual stimuli from 8 different categories are presented to 6 subjects during 12 sessions. The goal is to predict the category of the stimulus presented to the subject given the recorded fMRI volumes. For the sake of simplicity, we restrict the example to one subject and try to analyse the stimulus as per the presented images and in resting state as well.
 
@@ -36,4 +36,4 @@ dG = DyNeuGraph(G=graph, y=y)
 dG.visualize('haxby/haxby_output.html')
 ```
 
-![OUTPUT](images/haxby.png)
+![OUTPUT](https://raw.githubusercontent.com/Pranav-Khurana/MPR/master/images/haxby.png)
