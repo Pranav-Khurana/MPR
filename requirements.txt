@@ -1,0 +1,5 @@
+numpy==1.16.2
+pandas==0.24.2
+dyneusr==0.3.4
+kmapper==1.2.0
+scikit_learn==0.21.3
