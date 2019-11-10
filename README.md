@@ -13,7 +13,7 @@ Clone the repository and install all the requirements
 
 `git clone https://github.com/Pranav-Khurana/MPR.git`
 
-`pip install requirements.txt`
+`pip install -r requirements.txt`
 
 Move to the directory of experiment you wish to analyse and study (suppose haxby) and run [experiment].py file.
 
