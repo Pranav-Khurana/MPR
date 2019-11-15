@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" >
+		<title>MPR</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="icon" href="i/favicon.png" type="image/x-icon">
+		<!-- Google Fonts -->
+				<link href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,600,500,700,800,900|DM+Sans:100,200,300,400,500,600,700,800,900&amp;subset=latin" rel="stylesheet">
+				<!-- Bootstrap 4.3.1 CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<!-- Slick 1.8.1 jQuery plugin CSS (Sliders) -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+		<!-- Fancybox 3 jQuery plugin CSS (Open images and video in popup) -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+		<!-- AOS 2.3.4 jQuery plugin CSS (Animations) -->
+		<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+		<!-- FontAwesome CSS -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<!-- Startup 3 CSS (Styles for all blocks) -->
+					<link href="css/style.css" rel="stylesheet" />
+				<!-- jQuery 3.3.1 -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+			</head> 
+	<body>
+<!-- Navigation Mobile type 1 -->
+
+<a href="#" class="open_menu bg-light radius_full"><i class="fas fa-bars lh-40"></i></a>
+<div class="navigation_mobile bg-dark type1">
+	<a href="#" class="close_menu color-white"><i class="fas fa-times"></i></a>
+	<div class="px-40 pt-60 pb-60 inner">
+				<div><a href="#" class="f-heading f-22 link color-white mb-20">Home</a></div>	
+						<div><a href="#" class="f-heading f-22 link color-white mb-20">Tour</a></div>	
+						<div><a href="#" class="f-heading f-22 link color-white mb-20">Mobile Apps</a></div>	
+						<div><a href="#" class="f-heading f-22 link color-white mb-20">Pricing</a></div>	
+						<div><a href="#" class="f-heading f-22 link color-white mb-20">Development</a></div>	
+						
+	</div>
+</div>
+
+<header>
+	<div class="container">
+        <br>
+        <br>
+		<h2 class="big text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">Haxby Experiment </h2>
+		<div class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+			In the original work, visual stimuli from 8 different categories are presented to 6 subjects during 12 sessions. The goal is to predict the category of the stimulus presented to the subject given the recorded fMRI volumes. For the sake of simplicity, we restrict the example to one subject and try to analyse the stimulus as per the presented images and in resting state as well. 
+        </div><br><br>
+    </div>
+</header>
+        
+
+<!-- Team 2 -->
+
+<section class="text-left ">
+	<style>
+		.team_2{background-image:url(i/team__bg.jpg);}
+		@media(-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi){
+			.team_2{background-image:url(i/team_2_bg@x.jpg);}
+		}
+	</style>
+	<div class="container px-xl-0" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+		<div class="row justify-content-left color-white">
+			<div class="col-xl-12 col-lg-10">
+				<div class="mt-15 f-22 op-7 text-adaptive">
+					<div data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">					
+					<section>
+
+<div style="background-color:black;"  ><div class="highlight"><pre class="highlight">
+<font color="white"> 
+<code>
+<span>import numpy as np</span> 
+<span>import pandas as pd</span>
+<span>from dyneusr import DyNeuGraph</span> 
+<span>from nilearn.datasets import fetch_haxby</span>
+<span>from nilearn.input_data import NiftiMasker</span>
+<span>from kmapper import KeplerMapper, Cover</span>
+<span>from sklearn.manifold import</span> <span>TSNE</span>
+<span>from</span> <span>sklearn.cluster</span> <span>import</span> <span>DBSCAN</span>
+
+<span># Fetch dataset, extract time-series from ventral temporal (VT) mask
+</span><span>dataset</span> <span>=</span> <span>fetch_haxby</span><span>()</span>
+<span class="n">masker</span> <span class="o">=</span> <span class="n">NiftiMasker</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">mask_vt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+    <span class="n">standardize</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">detrend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">smoothing_fwhm</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+    <span class="n">low_pass</span><span class="o">=</span><span class="mf">0.09</span><span class="p">,</span> <span class="n">high_pass</span><span class="o">=</span><span class="mf">0.008</span><span class="p">,</span> <span class="n">t_r</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+    <span class="n">memory</span><span class="o">=</span><span class="s">"nilearn_cache"</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Encode labels as integers
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">session_target</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">" "</span><span class="p">)</span>
+<span class="n">target</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">l</span><span class="p">:(</span><span class="n">target</span><span class="o">==</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">l</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">)})</span>
+
+<span class="c1"># Generate shape graph using KeplerMapper
+</span><span class="n">mapper</span> <span class="o">=</span> <span class="n">KeplerMapper</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lens</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">TSNE</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">lens</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">cover</span><span class="o">=</span><span class="n">Cover</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">clusterer</span><span class="o">=</span><span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">20.</span><span class="p">))</span>
+
+<span class="c1"># Visualize the shape graph using DyNeuSR's DyNeuGraph                          
+</span><span class="n">dG</span> <span class="o">=</span> <span class="n">DyNeuGraph</span><span class="p">(</span><span class="n">G</span><span class="o">=</span><span class="n">graph</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="n">dG</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="s">'haxby/haxby_output.html'</span><span class="p">)</span>
+</code>
+</font></pre></div></div>
+<div>
+    <font color="black"> 
+    <span>OUTPUT</span>
+    </font>
+    <br><br>
+<p><img width= 100% height=100% src="https://raw.githubusercontent.com/Pranav-Khurana/MPR/master/images/haxby.png" alt="OUTPUT"></p>
+</div>
+
+</section>
+</div>					
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- forms alerts -->
+<div class="alert alert-success alert-dismissible fixed-top alert-form-success" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Thanks for your message!
+</div>
+<div class="alert alert-warning alert-dismissible fixed-top alert-form-check-fields" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Please, fill in required fields.
+</div>
+<div class="alert alert-danger alert-dismissible fixed-top alert-form-error" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	An error occurred while sending data :(
+</div>
+
+<!-- Bootstrap 4.3.1 JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<!-- Fancybox 3 jQuery plugin JS (Open images and video in popup) -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<!-- Google maps JS API -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDP6Ex5S03nvKZJZSvGXsEAi3X_tFkua4U"></script>
+<!-- Slick 1.8.1 jQuery plugin JS (Sliders) -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- AOS 2.3.4 jQuery plugin JS (Animations) -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<!-- Maskedinput jQuery plugin JS (Masks for input fields) -->
+<script src="js/jquery.maskedinput.min.js"></script>
+<!-- Startup 3 JS (Custom js for all blocks) -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
