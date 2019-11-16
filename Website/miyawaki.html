@@ -170,17 +170,13 @@
 </code>
 </div></div>
 <div>
-    <font color= ##000066> 
-        <h3 class="big text-center mw-1000 mx-auto mt-30 f-223 color text-center text-adaptive" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">OUTPUT
-        </h3>
-    </font>
-    <br><br>
+		<button onclick='func()'>Click here for output</button>
 <table style="width:100%">
 <tr>
-    <th> <p class="col-xl-12" ><img width= 100% height=100% src="/images/parametric.png" alt="OUTPUT"></p>
+    <th> <p class="col-xl-12" ><img width= 100% height=100% id="image1" alt="OUTPUT"></p>
     </th>
     <th>
-    <p class="col-xl-12" ><img width= 100% height=100% src="/images/non-parametric.png" alt="OUTPUT"></p>
+    <p class="col-xl-12" ><img width= 100% height=100% id="image2" alt="OUTPUT"></p>
     </th>
     </tr>    
 </table>    
@@ -206,6 +202,13 @@
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	An error occurred while sending data :(
 </div>
+
+<script>
+function func(){
+	document.getElementById("image1").src = "/images/parametric.png";
+	document.getElementById("image2").src = "/images/non-parametric.png";
+}
+</script>
 
 <!-- Bootstrap 4.3.1 JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
