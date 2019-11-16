@@ -42,10 +42,18 @@
 	<div class="container">
         <br>
         <br>
-		<h2 class="big text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">Haxby Experiment </h2>
-		<div class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
-			In the original work, visual stimuli from 8 different categories are presented to 6 subjects during 12 sessions. The goal is to predict the category of the stimulus presented to the subject given the recorded fMRI volumes. For the sake of simplicity, we restrict the example to one subject and try to analyse the stimulus as per the presented images and in resting state as well. 
-        </div><br><br>
+		<h2 class="big text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">The Functional Localizer Dataset</h2>
+		<div class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">The Functional Localizer is a simple and fast acquisition procedure based on a 5-minute functional magnetic resonance imaging (fMRI) sequence that can be run as easily and as systematically as an anatomical scan. This protocol captures the cerebral bases of auditory and visual perception, motor actions, reading, language comprehension and mental calculation at an individual level. Individual functional maps are reliable and quite precise. 
+        </div><br>
+        <h4 class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">Massively univariate analysis of a motor task from the Localizer dataset
+        </h4>
+        <br>
+        <div class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">This example shows the results obtained in a massively univariate analysis performed at the inter-subject level with various methods. We use the [left button press (auditory cue)] task from the Localizer dataset and seek association between the contrast values and a variate that measures the speed of pseudo-word reading. No confounding variate is included in the model.
+        <ol>
+			<li>A standard Anova is performed. Data smoothed at 5 voxels FWHM are used.</li> 
+			<li>A permuted Ordinary Least Squares algorithm is run at each voxel. Data smoothed at 5 voxels FWHM are used.</li> 
+		</ol>
+        </div>
     </div>
 </header>
         
@@ -66,50 +74,117 @@
 					<div data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">					
 					<section>
 
-<div style="background-color:black;"  ><div class="highlight"><pre class="highlight">
-<font color="white"> 
+<div style="background-color:black;"  ><div class="highlight"> 
 <code>
-<span>import numpy as np</span> 
-<span>import pandas as pd</span>
-<span>from dyneusr import DyNeuGraph</span> 
-<span>from nilearn.datasets import fetch_haxby</span>
-<span>from nilearn.input_data import NiftiMasker</span>
-<span>from kmapper import KeplerMapper, Cover</span>
-<span>from sklearn.manifold import</span> <span>TSNE</span>
-<span>from</span> <span>sklearn.cluster</span> <span>import</span> <span>DBSCAN</span>
+<pre>
+	<font color="white">
+	import numpy as np 
+	import matplotlib.pyplot as plt
+	from nilearn import datasets
+	from nilearn.input_data import NiftiMasker
+	from nilearn.mass_univariate import permuted_ols
 
-<span># Fetch dataset, extract time-series from ventral temporal (VT) mask
-</span><span>dataset</span> <span>=</span> <span>fetch_haxby</span><span>()</span>
-<span class="n">masker</span> <span class="o">=</span> <span class="n">NiftiMasker</span><span class="p">(</span>
-    <span class="n">dataset</span><span class="o">.</span><span class="n">mask_vt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
-    <span class="n">standardize</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">detrend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">smoothing_fwhm</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
-    <span class="n">low_pass</span><span class="o">=</span><span class="mf">0.09</span><span class="p">,</span> <span class="n">high_pass</span><span class="o">=</span><span class="mf">0.008</span><span class="p">,</span> <span class="n">t_r</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-    <span class="n">memory</span><span class="o">=</span><span class="s">"nilearn_cache"</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+	#Load Localizer Contrast
+	n_samples = 94
+	localizer_dataset = datasets.fetch_localizer_contrasts(['left button press (auditory cue)'], n_subjects=n_samples)
 
-<span class="c1"># Encode labels as integers
-</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">session_target</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">" "</span><span class="p">)</span>
-<span class="n">target</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">l</span><span class="p">:(</span><span class="n">target</span><span class="o">==</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">l</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">)})</span>
+	#print basic information on the dataset
+	#cmaps: string list, Paths to constrast maps
+	print('First constrast nifti image (3D) is located at: %s'% localizer_dataset.cmaps[0]) 
+	tested_var = localizer_dataset.ext_vars['pseudo']
 
-<span class="c1"># Generate shape graph using KeplerMapper
-</span><span class="n">mapper</span> <span class="o">=</span> <span class="n">KeplerMapper</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">lens</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">TSNE</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">graph</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">lens</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">cover</span><span class="o">=</span><span class="n">Cover</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">clusterer</span><span class="o">=</span><span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">20.</span><span class="p">))</span>
+	# Quality check / Remove subjects with bad tested variate
 
-<span class="c1"># Visualize the shape graph using DyNeuSR's DyNeuGraph                          
-</span><span class="n">dG</span> <span class="o">=</span> <span class="n">DyNeuGraph</span><span class="p">(</span><span class="n">G</span><span class="o">=</span><span class="n">graph</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-<span class="n">dG</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="s">'haxby/haxby_output.html'</span><span class="p">)</span>
+	mask_quality_check = np.where(tested_var != b'None')[0]
+	n_samples = mask_quality_check.size
+	contrast_map_filenames = [localizer_dataset.cmaps[i] for i in mask_quality_check]
+
+	tested_var = tested_var[mask_quality_check].astype(float).reshape((-1,1))
+	print("Actual number of subjects after quality check: %d" %n_samples)
+	# Mask Data
+
+	nifti_masker = NiftiMasker(smoothing_fwhm=5, memory='nilearn_cache', memory_level=1) #cache options
+	fmri_masked = nifti_masker.fit_transform(contrast_map_filenames)
+	# Anova (parametric F-scores)
+
+	from sklearn.feature_selection import f_regression
+	_, pvals_anova = f_regression(fmri_masked, tested_var, center=True)
+	pvals_anova *= fmri_masked.shape[1]
+	pvals_anova[np.isnan(pvals_anova)] = 1
+	pvals_anova[pvals_anova > 1] = 1
+	neg_log_pvals_anova = - np.log10(pvals_anova)
+	neg_log_pvals_anova_unmasked = nifti_masker.inverse_transform(
+	neg_log_pvals_anova)
+	# Perform massively univarite analysis with permuted OLS
+
+	neg_log_pvals_permuted_ols,_,_ = permuted_ols(
+	tested_var, fmri_masked,
+	model_intercept=True,
+	n_perm = 500, #For the sake of time. Idealy, this should be 10,000
+	n_jobs=1) # Can be changed to use more CPUs
+	neg_log_pvals_permuted_ols_unmasked = nifti_masker.inverse_transform(np.ravel(neg_log_pvals_permuted_ols))
+	# Visualization
+	from nilearn.plotting import plot_stat_map, show
+
+	# Various plotting parameters
+	z_slice = 12 # plotted slice
+
+	threshold = - np.log10(0.1) # 10% corrected
+	vmax = min(np.amax(neg_log_pvals_permuted_ols),
+	np.amax(neg_log_pvals_anova))
+
+	# Plot Anova p-values
+	fig = plt.figure(figsize=(5, 7), facecolor='k')
+
+	display = plot_stat_map(neg_log_pvals_anova_unmasked,
+	threshold=threshold,
+	display_mode='z', cut_coords=[z_slice],
+	figure=fig, vmax=vmax, black_bg=True)
+
+	n_detections = (neg_log_pvals_anova_unmasked.get_data() > threshold).sum()
+	title = ('Negative $\log_{10}$ p-values'
+	'\n(Parametric + Bonferroni correction)'
+	'\n%d detections') % n_detections
+
+	display.title(title, y=1.2)
+
+	# Plot permuted OLS p-values
+	fig = plt.figure(figsize=(5, 7), facecolor='k')
+
+	display = plot_stat_map(neg_log_pvals_permuted_ols_unmasked,
+	threshold=threshold,
+	display_mode='z', cut_coords=[z_slice],
+	figure=fig, vmax=vmax, black_bg=True)
+
+	n_detections = (neg_log_pvals_permuted_ols_unmasked.get_data()
+	> threshold).sum()
+	title = ('Negative $\log_{10}$ p-values'
+	'\n(Non-parametric + max-type correction)'
+	'\n%d detections') % n_detections
+
+	display.title(title, y=1.2)
+
+	show()
+	</font>
+</pre>
 </code>
-</font></pre></div></div>
+</div></div>
 <div>
-    <font color="black"> 
-    <span>OUTPUT</span>
+    <font color= ##000066> 
+        <h3 class="big text-center mw-1000 mx-auto mt-30 f-223 color text-center text-adaptive" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">OUTPUT
+        </h3>
     </font>
     <br><br>
-<p><img width= 100% height=100% src="https://raw.githubusercontent.com/Pranav-Khurana/MPR/master/images/haxby.png" alt="OUTPUT"></p>
+<table style="width:100%">
+<tr>
+    <th> <p class="col-xl-12" ><img width= 100% height=100% src="/images/parametric.png" alt="OUTPUT"></p>
+    </th>
+    <th>
+    <p class="col-xl-12" ><img width= 100% height=100% src="/images/non-parametric.png" alt="OUTPUT"></p>
+    </th>
+    </tr>    
+</table>    
 </div>
-
 </section>
 </div>					
 </div>
