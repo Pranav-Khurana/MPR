@@ -29,17 +29,27 @@
 <div class="navigation_mobile bg-dark type1">
 	<a href="#" class="close_menu color-white"><i class="fas fa-times"></i></a>
 	<div class="px-40 pt-60 pb-60 inner">
-				<div><a href="#" class="f-heading f-22 link color-white mb-20">Home</a></div>	
-						<div><a href="#" class="f-heading f-22 link color-white mb-20">Tour</a></div>	
-						<div><a href="#" class="f-heading f-22 link color-white mb-20">Mobile Apps</a></div>	
-						<div><a href="#" class="f-heading f-22 link color-white mb-20">Pricing</a></div>	
-						<div><a href="#" class="f-heading f-22 link color-white mb-20">Development</a></div>	
-						
+				<div><a href="index.html" class="f-heading f-22 link color-white mb-20">Home</a></div>	
+						<div><a href="haxby.html" class="f-heading f-22 link color-white mb-20">Haxby</a></div>	
+						<div><a href="miyawaki.html" class="f-heading f-22 link color-white mb-20">Miyawaki</a></div>	
 	</div>
 </div>
 
 <header>
+    <nav class="header_menu_1 pt-10 pb-10 mt-10">
+		<div class="container px-xl-0">
+			<div class="row justify-content-center align-items-center f-18 medium">
+				<div class="col-lg-6 text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+					<a href="index.html" class="link color-heading mx-15">Home</a>
+					<a href="haxby.html" class="link color-heading mx-15">Haxby</a>
+					<a href="miyawaki.html" class="link color-heading mx-15">Miyawaki</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+    
 	<div class="container">
+        <br>
         <br>
         <br>
 		<h2 class="big text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">Haxby Experiment </h2>
@@ -66,40 +76,41 @@
 					<div data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">					
 					<section>
 
-<div style="background-color:black;"  ><div class="highlight"><pre class="highlight">
+<div style="background-color:black;"  ><div class="highlight">
+<pre>
 <font color="white"> 
 <code>
-<span>import numpy as np</span> 
-<span>import pandas as pd</span>
-<span>from dyneusr import DyNeuGraph</span> 
-<span>from nilearn.datasets import fetch_haxby</span>
-<span>from nilearn.input_data import NiftiMasker</span>
-<span>from kmapper import KeplerMapper, Cover</span>
-<span>from sklearn.manifold import</span> <span>TSNE</span>
-<span>from</span> <span>sklearn.cluster</span> <span>import</span> <span>DBSCAN</span>
+    import numpy as np 
+    import pandas as pd
+    from dyneusr import DyNeuGraph 
+    from nilearn.datasets import fetch_haxby
+    from nilearn.input_data import NiftiMasker
+    from kmapper import KeplerMapper, Cover
+    from sklearn.manifold import TSNE
+    from sklearn.cluster import DBSCAN
 
-<span># Fetch dataset, extract time-series from ventral temporal (VT) mask
-</span><span>dataset</span> <span>=</span> <span>fetch_haxby</span><span>()</span>
-<span class="n">masker</span> <span class="o">=</span> <span class="n">NiftiMasker</span><span class="p">(</span>
-    <span class="n">dataset</span><span class="o">.</span><span class="n">mask_vt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
-    <span class="n">standardize</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">detrend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">smoothing_fwhm</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
-    <span class="n">low_pass</span><span class="o">=</span><span class="mf">0.09</span><span class="p">,</span> <span class="n">high_pass</span><span class="o">=</span><span class="mf">0.008</span><span class="p">,</span> <span class="n">t_r</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-    <span class="n">memory</span><span class="o">=</span><span class="s">"nilearn_cache"</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    # Fetch dataset, extract time-series from ventral temporal (VT) mask
+    dataset = fetch_haxby()
+    masker = NiftiMasker(
+        dataset.mask_vt[0], 
+        standardize=True, detrend=True, smoothing_fwhm=4.0,
+        low_pass=0.09, high_pass=0.008, t_r=2.5,
+        memory="nilearn_cache")
+    X = masker.fit_transform(dataset.func[0])
 
-<span class="c1"># Encode labels as integers
-</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">session_target</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s">" "</span><span class="p">)</span>
-<span class="n">target</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">l</span><span class="p">:(</span><span class="n">target</span><span class="o">==</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">l</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">)})</span>
+    # Encode labels as integers
+    df = pd.read_csv(dataset.session_target[0], sep=" ")
+    target, labels = pd.factorize(df.labels.values)
+    y = pd.DataFrame({l:(target==i).astype(int) for i,l in enumerate(labels)})
 
-<span class="c1"># Generate shape graph using KeplerMapper
-</span><span class="n">mapper</span> <span class="o">=</span> <span class="n">KeplerMapper</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">lens</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">TSNE</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">graph</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">lens</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">cover</span><span class="o">=</span><span class="n">Cover</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">clusterer</span><span class="o">=</span><span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">20.</span><span class="p">))</span>
+    # Generate shape graph using KeplerMapper
+    mapper = KeplerMapper(verbose=1)
+    lens = mapper.fit_transform(X, projection=TSNE(2))
+    graph = mapper.map(lens, X, cover=Cover(20, 0.5), clusterer=DBSCAN(eps=20.))
 
-<span class="c1"># Visualize the shape graph using DyNeuSR's DyNeuGraph                          
-</span><span class="n">dG</span> <span class="o">=</span> <span class="n">DyNeuGraph</span><span class="p">(</span><span class="n">G</span><span class="o">=</span><span class="n">graph</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-<span class="n">dG</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="s">'haxby/haxby_output.html'</span><span class="p">)</span>
+    # Visualize the shape graph using DyNeuSR's DyNeuGraph                          
+    dG = DyNeuGraph(G=graph, y=y)
+    dG.visualize('haxby/haxby_output.html')
 </code>
 </font></pre></div></div>
 <div>
