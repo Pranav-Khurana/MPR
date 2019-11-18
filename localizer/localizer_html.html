@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>MPR</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="../images/favicon.png" type="image/x-icon">
+	<!-- Google Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,600,500,700,800,900|DM+Sans:100,200,300,400,500,600,700,800,900&amp;subset=latin"
+		rel="stylesheet">
+	<!-- Bootstrap 4.3.1 CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- Slick 1.8.1 jQuery plugin CSS (Sliders) -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+	<!-- Fancybox 3 jQuery plugin CSS (Open images and video in popup) -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+	<!-- AOS 2.3.4 jQuery plugin CSS (Animations) -->
+	<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+	<!-- FontAwesome CSS -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<!-- Startup 3 CSS (Styles for all blocks) -->
+	<link href="../css/style.css" rel="stylesheet" />
+	<!-- jQuery 3.3.1 -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+	<!-- Navigation Mobile type 1 -->
+
+	<a href="#" class="open_menu bg-light radius_full"><i class="fas fa-bars lh-40"></i></a>
+	<div class="navigation_mobile bg-dark type1">
+		<a href="#" class="close_menu color-white"><i class="fas fa-times"></i></a>
+		<div class="px-40 pt-60 pb-60 inner">
+			<div><a href="../index.html" class="f-heading f-22 link color-white mb-20">Home</a></div>
+			<div><a href="../haxby/haxby_html.html" class="f-heading f-22 link color-white mb-20">Haxby</a></div>
+			<div><a href="../miyawaki/miyawaki_html.html" class="f-heading f-22 link color-white mb-20">Miyawaki</a></div>
+
+
+		</div>
+	</div>
+
+	<header>
+		<nav class="header_menu_1 pt-10 pb-10 mt-10">
+			<div class="container px-xl-0">
+				<div class="row justify-content-center align-items-center f-18 medium">
+					<div class="col-lg-6 text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+						<a href="../index.html" class="link color-heading mx-15">Home</a>
+						<a href="../haxby/haxby_html.html" class="link color-heading mx-15">Haxby</a>
+						<a href="../miyawaki/miyawaki_html.html" class="link color-heading mx-15">Miyawaki</a>
+						<br>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<br>
+			<br><br>
+			<h2 class="big text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">The Functional
+				Localizer Dataset</h2>
+			<div class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600"
+				data-aos="fade-down" data-aos-delay="300">The Functional Localizer is a simple and fast acquisition
+				procedure based on a 5-minute functional magnetic resonance imaging (fMRI) sequence that can be run as
+				easily and as systematically as an anatomical scan. This protocol captures the cerebral bases of
+				auditory and visual perception, motor actions, reading, language comprehension and mental calculation at
+				an individual level. Individual functional maps are reliable and quite precise.
+			</div><br>
+			<h4 class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600"
+				data-aos="fade-down" data-aos-delay="300">Massively univariate analysis of a motor task from the
+				Localizer dataset
+			</h4>
+			<br>
+			<div class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600"
+				data-aos="fade-down" data-aos-delay="300">This example shows the results obtained in a massively
+				univariate analysis performed at the inter-subject level with various methods. We use the [left button
+				press (auditory cue)] task from the Localizer dataset and seek association between the contrast values
+				and a variate that measures the speed of pseudo-word reading. No confounding variate is included in the
+				model.
+				<ol>
+					<li>A standard Anova is performed. Data smoothed at 5 voxels FWHM are used.</li>
+					<li>A permuted Ordinary Least Squares algorithm is run at each voxel. Data smoothed at 5 voxels FWHM
+						are used.</li>
+				</ol>
+			</div>
+		</div>
+	</header>
+
+
+	<!-- Team 2 -->
+
+	<section class="text-left ">
+		<style>
+			.team_2 {
+				background-image: url(../images/team__bg.jpg);
+			}
+
+			@media(-webkit-min-device-pixel-ratio: 1.25),
+			(min-resolution: 120dpi) {
+				.team_2 {
+					background-image: url(../images/team_2_bg@x.jpg);
+				}
+			}
+		</style>
+		<div class="container px-xl-0">
+			<div class="row justify-content-left color-white">
+				<div class="col-xl-12 col-lg-10">
+					<div class="mt-15 f-22 op-7 text-adaptive">
+						<div data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
+							<section>
+
+								<div style="background-color:black;">
+									<div class="highlight">
+										<code>
+<pre>
+	<font color="white">
+	import numpy as np 
+	import matplotlib.pyplot as plt
+	from nilearn import datasets
+	from nilearn.input_data import NiftiMasker
+	from nilearn.mass_univariate import permuted_ols
+
+	#Load Localizer Contrast
+	n_samples = 94
+	localizer_dataset = datasets.fetch_localizer_contrasts(['left button press (auditory cue)'], n_subjects=n_samples)
+
+	#print basic information on the dataset
+	#cmaps: string list, Paths to constrast maps
+	print('First constrast nifti image (3D) is located at: %s'% localizer_dataset.cmaps[0]) 
+	tested_var = localizer_dataset.ext_vars['pseudo']
+
+	# Quality check / Remove subjects with bad tested variate
+
+	mask_quality_check = np.where(tested_var != b'None')[0]
+	n_samples = mask_quality_check.size
+	contrast_map_filenames = [localizer_dataset.cmaps[i] for i in mask_quality_check]
+
+	tested_var = tested_var[mask_quality_check].astype(float).reshape((-1,1))
+	print("Actual number of subjects after quality check: %d" %n_samples)
+	# Mask Data
+
+	nifti_masker = NiftiMasker(smoothing_fwhm=5, memory='nilearn_cache', memory_level=1) #cache options
+	fmri_masked = nifti_masker.fit_transform(contrast_map_filenames)
+	# Anova (parametric F-scores)
+
+	from sklearn.feature_selection import f_regression
+	_, pvals_anova = f_regression(fmri_masked, tested_var, center=True)
+	pvals_anova *= fmri_masked.shape[1]
+	pvals_anova[np.isnan(pvals_anova)] = 1
+	pvals_anova[pvals_anova > 1] = 1
+	neg_log_pvals_anova = - np.log10(pvals_anova)
+	neg_log_pvals_anova_unmasked = nifti_masker.inverse_transform(
+	neg_log_pvals_anova)
+	# Perform massively univarite analysis with permuted OLS
+
+	neg_log_pvals_permuted_ols,_,_ = permuted_ols(
+	tested_var, fmri_masked,
+	model_intercept=True,
+	n_perm = 500, #For the sake of time. Idealy, this should be 10,000
+	n_jobs=1) # Can be changed to use more CPUs
+	neg_log_pvals_permuted_ols_unmasked = nifti_masker.inverse_transform(np.ravel(neg_log_pvals_permuted_ols))
+	# Visualization
+	from nilearn.plotting import plot_stat_map, show
+
+	# Various plotting parameters
+	z_slice = 12 # plotted slice
+
+	threshold = - np.log10(0.1) # 10% corrected
+	vmax = min(np.amax(neg_log_pvals_permuted_ols),
+	np.amax(neg_log_pvals_anova))
+
+	# Plot Anova p-values
+	fig = plt.figure(figsize=(5, 7), facecolor='k')
+
+	display = plot_stat_map(neg_log_pvals_anova_unmasked,
+	threshold=threshold,
+	display_mode='z', cut_coords=[z_slice],
+	figure=fig, vmax=vmax, black_bg=True)
+
+	n_detections = (neg_log_pvals_anova_unmasked.get_data() > threshold).sum()
+	title = ('Negative $\log_{10}$ p-values'
+	'\n(Parametric + Bonferroni correction)'
+	'\n%d detections') % n_detections
+
+	display.title(title, y=1.2)
+
+	# Plot permuted OLS p-values
+	fig = plt.figure(figsize=(5, 7), facecolor='k')
+
+	display = plot_stat_map(neg_log_pvals_permuted_ols_unmasked,
+	threshold=threshold,
+	display_mode='z', cut_coords=[z_slice],
+	figure=fig, vmax=vmax, black_bg=True)
+
+	n_detections = (neg_log_pvals_permuted_ols_unmasked.get_data()
+	> threshold).sum()
+	title = ('Negative $\log_{10}$ p-values'
+	'\n(Non-parametric + max-type correction)'
+	'\n%d detections') % n_detections
+
+	display.title(title, y=1.2)
+
+	show()
+	</font>
+</pre>
+</code>
+									</div>
+								</div>
+								<div>
+									<button onclick='func()'>Click here for output</button>
+									<button><a
+											href="https://hub.gke.mybinder.org/user/pranav-khurana-til-9gmzg01r/notebooks/ml_course/ipynbfiles/Joins.ipynb">Run
+											Code Here</a> </button>
+
+									<table style="width:100%">
+										<tr>
+											<th>
+												<p class="col-xl-12"><img width=100% height=100% id="image1"
+														alt="OUTPUT"></p>
+											</th>
+											<th>
+												<p class="col-xl-12"><img width=100% height=100% id="image2"
+														alt="OUTPUT"></p>
+											</th>
+										</tr>
+									</table>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- forms alerts -->
+	<div class="alert alert-success alert-dismissible fixed-top alert-form-success" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+				aria-hidden="true">&times;</span></button>
+		Thanks for your message!
+	</div>
+	<div class="alert alert-warning alert-dismissible fixed-top alert-form-check-fields" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+				aria-hidden="true">&times;</span></button>
+		Please, fill in required fields.
+	</div>
+	<div class="alert alert-danger alert-dismissible fixed-top alert-form-error" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+				aria-hidden="true">&times;</span></button>
+		An error occurred while sending data :(
+	</div>
+
+	<script>
+		function func() {
+			document.getElementById("image1").src = "../images/parametric.png";
+			document.getElementById("image2").src = "../images/non-parametric.png";
+		}
+	</script>
+
+	<!-- Bootstrap 4.3.1 JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<!-- Fancybox 3 jQuery plugin JS (Open images and video in popup) -->
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+	<!-- Google maps JS API -->
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDP6Ex5S03nvKZJZSvGXsEAi3X_tFkua4U"></script>
+	<!-- Slick 1.8.1 jQuery plugin JS (Sliders) -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<!-- AOS 2.3.4 jQuery plugin JS (Animations) -->
+	<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+	<!-- Maskedinput jQuery plugin JS (Masks for input fields) -->
+	<script src="../js/jquery.maskedinput.min.js"></script>
+	<!-- Startup 3 JS (Custom js for all blocks) -->
+	<script src="../js/script.js"></script>
+
+</body>
+
+</html>

@@ -4,8 +4,9 @@ The Primary objective of this project is to understand and analyze various exper
 
 ### **Experimental Analysis**
 
-- [x] [Haxby et al. (2001)](haxby/haxby.md)
-- [ ] [Miyawaki et al. (2008)](#miyawaki)
+- [Haxby Experiment](haxby/haxby_readme.md)
+- [Motor Task Analysis](localizer/localizer_readme.md)
+- [Miyawaki Experiment](#miyawaki)
 
 ### **Setup and Usage**
 
