@@ -50,6 +50,7 @@ a:active, a:focus, button:active, button:focus {
   outline: none;
 }
 
+
 button {
   border: none;
   outline: none !important;
@@ -121,6 +122,29 @@ b, strong {
 
 [data-aos=fade-up] {
   transform: translate3d(0, 35px, 0);
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #f4511e;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 /* Slick slider */
