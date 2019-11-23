@@ -49,8 +49,8 @@
 					<div class="col-lg-6 text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
 						<a href="../index.html" class="link color-heading mx-15">Home</a>
 						<a href="../haxby/haxby_html.html" class="link color-heading mx-15">Haxby</a>
-						<a href="../visualization/visualization_html.html" class="link color-heading mx-15">Visualizing Nifti Files</a>
 						<a href="../miyawaki/miyawaki_html.html" class="link color-heading mx-15">Miyawaki</a>
+						<a href="../visualization/visualization_html.html" class="link color-heading mx-15">Visualizing Nifti Files</a>
 					</div>
 				</div>
 			</div>
@@ -110,8 +110,15 @@
 					<div class="mt-15 f-22 op-7 text-adaptive">
 						<div data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
 							<section>
-
-								<div style="background-color:black;">
+								<div align="center">
+                                    <button class="button" onclick='func()'>View Code Here</button>
+                                    <button class="button"><a
+                                            href="" target="blank">Run Code Here</a> 
+                                    </button>
+                                            <br>
+                                            <br>
+                                </div>
+								<div id="code" style="background-color:black; display: none;">
 									<div class="highlight">
 										<code>
 <pre>
@@ -209,11 +216,13 @@
 									</div>
 								</div>
 								<div align="center">
-									<button class="button"  onclick='func()'>Click here for output</button>
+									<!--<button class="button"  onclick='func()'>Click here for output</button>
 									<button class="button" ><a
 											href="https://hub.gke.mybinder.org/user/pranav-khurana-til-9gmzg01r/notebooks/ml_course/ipynbfiles/Joins.ipynb">Run
 											Code Here</a> </button>
-											<br><br>
+											<font color="black">
+											<h4 class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive">OUTPUT</h4></font>-->
+											<br>
 
 									<table style="width:100%">
 										<tr>
@@ -240,6 +249,8 @@
 		function func() {
 			document.getElementById("image1").src = "localizer_output_param.png";
 			document.getElementById("image2").src = "localizer_output_non_param.png";
+			var div = document.getElementById("code");
+            div.style.display = "block";
 		}
 	</script>
 
