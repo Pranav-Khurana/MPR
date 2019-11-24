@@ -66,7 +66,7 @@
             <h2 class="big text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">Visualisation of
                 Nifti Files</h2>
             <div class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600"
-                data-aos="fade-down" data-aos-delay="300">NIfTI stands for Neuroimaging Informations Technology
+                data-aos="fade-down" data-aos-delay="300">NIFTI stands for Neuroimaging Informations Technology
                 Initiative.
                 It's a standard representation of images, and it's the most common used type of analytic file.
                 Nilearn comes with plotting function to display brain maps coming from Nifti-like images, in the
@@ -79,10 +79,10 @@
                 <table style="width:100%">
                     <tr>
                         <th>
-                            <p class="col-xl-12"><img width=100% height=100% src="" alt="plot_glass_brain"></p>
+                            <p class="col-xl-12" align="text-left"><img width=100% height=100% src="Glassbrain.png" alt="plot_glass_brain"></p>
                         </th>
                         <th>
-                            <p class="col-xl-12"><img width=100% height=100% src="" alt="plot_anat"></p>
+                            <p class="col-xl-12"><img width=100% height=100% src="BasicPlotting.png" alt="plot_anat"></p>
                         </th>
                     </tr>
                 </table>
@@ -91,7 +91,7 @@
                 data-aos="fade-down" data-aos-delay="300">
                 <h4>Plotting functions in nilearn</h4>
                 <hr>
-                <table style="width:100%">
+                <table style="width:100%" border="1">
                     <tr>
                         <th>
                             <p class="col-xl-12">Function Name</p>
@@ -164,18 +164,6 @@
     <!-- Team 2 -->
 
     <section class="text-left ">
-        <style>
-            .team_2 {
-                background-image: url(../images/team__bg.jpg);
-            }
-
-            @media(-webkit-min-device-pixel-ratio: 1.25),
-            (min-resolution: 120dpi) {
-                .team_2 {
-                    background-image: url(../images/team_2_bg@x.jpg);
-                }
-            }
-        </style>
         <div class="container px-xl-0">
             <div class="row justify-content-left color-white">
                 <div class="col-xl-12 col-lg-10">
@@ -185,7 +173,7 @@
                                 <div align="center">
                                     <button class="button" onclick='func()'>View Code Here</button>
                                     <button class="button"><a
-                                            href="https://colab.research.google.com/drive/1Js8qSSHv2viWro4MuRhBryfYDsp1oQOt"
+                                            href="https://colab.research.google.com/drive/1gL9HhdtFR5s6tAW1LT5E4LvbK1szQVz5"
                                             target="blank">Run
                                             Code Here</a> </button>
                                     <br>
@@ -196,6 +184,8 @@
                                         <code>
     <pre>
         <font color="white">
+        1. Basic Atlas plotting
+
                 from nilearn import datasets
 
                 dataset = datasets.fetch_atlas_harvard_oxford('cort-maxprob-thr25-2mm')
@@ -206,6 +196,9 @@
 
                 plotting.plot_roi(atlas_filename, title="Harvard Oxford atlas")
                 plotting.show()
+
+
+        2. Glass brain plotting in nilearn    
 
                 from nilearn import datasets
 
@@ -219,6 +212,9 @@
                           display_mode='lyrz', threshold=3)
 
                 plotting.show()
+
+
+        3. Making a surface plot of a 3D statistical map
 
                 from nilearn import datasets
 
@@ -248,38 +244,24 @@
                                     </div>
                                 </div>
                                 <div align="center">
+                                    <font color="black">
                                     <table style="width:100%">
                                         <tr>
                                             <th>
                                                 <p class="col-xl-12"><img width=100% height=100% id="image1"
-                                                        alt="OUTPUT"></p>
+                                                        >1. Basic Atlas plotting</p>
                                             </th>
                                             <th>
-                                                <p class="col-xl-12"><img width=100% height=100% id="image2"
-                                                        alt="OUTPUT"></p>
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <p class="col-xl-12"><img width=100% height=100% id="image3"
-                                                        alt="OUTPUT"></p>
+                                                <p class="col-xl-12 "><img width=100% height=100% id="image2"
+                                                        >2. Glass brain plotting in nilearn</p>
                                             </th>
                                             <th>
-                                                <p class="col-xl-12"><img width=100% height=100% id="image4"
-                                                        alt="OUTPUT"></p>
+                                                <p class="col-xl-12 "><img width=100% height=100% id="image3"
+                                                       >   3. Making a surface plot of a 3D statistical map</p>
                                             </th>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <p class="col-xl-12"><img width=100% height=100% id="image5"
-                                                        alt="OUTPUT"></p>
-                                            </th>
-                                            <th>
-                                                <p class="col-xl-12"><img width=100% height=100% id="image6"
-                                                        alt="OUTPUT"></p>
-                                            </th>
-                                        </tr>
+                                        </tr>        
                                     </table>
+                                </font>
                                 </div>
                             </section>
                         </div>
@@ -291,14 +273,12 @@
 
     <script>
         function func() {
-            document.getElementById("image1").src = "miyawaki2008_reconstruction_0.png";
-            document.getElementById("image2").src = "miyawaki2008_reconstruction_1.png";
-            document.getElementById("image3").src = "miyawaki2008_reconstruction_2.png";
-            document.getElementById("image4").src = "miyawaki2008_reconstruction_3.png";
-            document.getElementById("image5").src = "miyawaki2008_reconstruction_4.png";
-            document.getElementById("image6").src = "miyawaki2008_reconstruction_5.png";
+            document.getElementById("image1").src = "BasicPlotting.png";
+            document.getElementById("image2").src = "Glassbrain.png";
+            document.getElementById("image3").src = "3dSurface.png";
             var div = document.getElementById("code");
             div.style.display = "block";
+            
         }
     </script>
 
