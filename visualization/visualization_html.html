@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>MPR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../images/favicon.png" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,400,600,500,700,800,900|DM+Sans:100,200,300,400,500,600,700,800,900&amp;subset=latin"
+        rel="stylesheet">
+    <!-- Bootstrap 4.3.1 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Slick 1.8.1 jQuery plugin CSS (Sliders) -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- Fancybox 3 jQuery plugin CSS (Open images and video in popup) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <!-- AOS 2.3.4 jQuery plugin CSS (Animations) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- Startup 3 CSS (Styles for all blocks) -->
+    <link href="../css/style.css" rel="stylesheet" />
+    <!-- jQuery 3.3.1 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigation Mobile type 1 -->
+
+    <a href="#" class="open_menu bg-light radius_full"><i class="fas fa-bars lh-40"></i></a>
+    <div class="navigation_mobile bg-dark type1">
+        <a href="#" class="close_menu color-white"><i class="fas fa-times"></i></a>
+        <div class="px-40 pt-60 pb-60 inner">
+            <div><a href="../index.html" class="f-heading f-22 link color-white mb-20">Home</a></div>
+            <div><a href="../haxby/haxby_html.html" class="f-heading f-22 link color-white mb-20">Haxby</a></div>
+            <div><a href="../miyawaki/miyawaki_html.html" class="f-heading f-22 link color-white mb-20">Miyawaki</a>
+            </div>
+            <div><a href="../localizer/localizer_html.html" class="f-heading f-22 link color-white mb-20">Analysis of
+                    Motor Task</a></div>
+        </div>
+    </div>
+
+    <header>
+        <nav class="header_menu_1 pt-10 pb-10 mt-10">
+            <div class="container px-xl-0">
+                <div class="row justify-content-center align-items-center f-18 medium">
+                    <div class="col-lg-12 text-center" data-aos-duration="600" data-aos="fade-down"
+                        data-aos-delay="300">
+                        <a href="../index.html" class="link color-heading mx-15">Home</a>
+                        <a href="../haxby/haxby_html.html" class="link color-heading mx-15">Haxby</a>
+                        <a href="../miyawaki/miyawaki_html.html" class="link color-heading mx-15">Miyawaki</a>
+                        <a href="../localizer/localizer_html.html" class="link color-heading mx-15">Analysis of Motor
+                            Task</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <br>
+            <br><br>
+            <h2 class="big text-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">Visualisation of
+                Nifti Files</h2>
+            <div class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600"
+                data-aos="fade-down" data-aos-delay="300">NIfTI stands for Neuroimaging Informations Technology
+                Initiative.
+                It's a standard representation of images, and it's the most common used type of analytic file.
+                Nilearn comes with plotting function to display brain maps coming from Nifti-like images, in the
+                nilearn.plotting module.
+                Nilearn has a set of plotting functions to plot brain volumes that are fined tuned to specific
+                applications. Amongst other things, they use different heuristics to find cutting coordinates.
+            </div>
+            <div class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600"
+                data-aos="fade-down" data-aos-delay="300">
+                <table style="width:100%">
+                    <tr>
+                        <th>
+                            <p class="col-xl-12"><img width=100% height=100% src="" alt="plot_glass_brain"></p>
+                        </th>
+                        <th>
+                            <p class="col-xl-12"><img width=100% height=100% src="" alt="plot_anat"></p>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="big mw-1000 mx-auto mt-30 f-22 color text-center text-adaptive" data-aos-duration="600"
+                data-aos="fade-down" data-aos-delay="300">
+                <h4>Plotting functions in nilearn</h4>
+                <hr>
+                <table style="width:100%">
+                    <tr>
+                        <th>
+                            <p class="col-xl-12">Function Name</p>
+                        </th>
+                        <th>
+                            <p class="col-xl-12">Function Description</p>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="col-xl-12">plot_anat</p>
+                        </td>
+                        <td>
+                            <p class="col-xl-12">Plotting an anatomical image</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="col-xl-12">plot_glass_brain
+                            </p>
+                        </td>
+                        <td>
+                            <p class="col-xl-12">Glass brain visualization. By default plots maximum intensity
+                                projection of the absolute values. To plot positive and negative values set plot_abs
+                                parameter to False.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="col-xl-12">plot_img</p>
+                        </td>
+                        <td>
+                            <p class="col-xl-12">
+                                General-purpose function, with no specific presets</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="col-xl-12">plot_stat_map</p>
+                        </td>
+                        <td>
+                            <p class="col-xl-12">
+                                Plotting a statistical map, like a T-map, a Z-map, or an ICA, with an optional
+                                background</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="col-xl-12">plot_epi</p>
+                        </td>
+                        <td>
+                            <p class="col-xl-12">
+                                    Plotting an EPI, or T2* image</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="col-xl-12">plot_surf_roi
+                            </p>
+                        </td>
+                        <td>
+                            <p class="col-xl-12">Plotting surface atlases on a brain surface</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    </header>
+
+
+    <!-- Team 2 -->
+
+    <section class="text-left ">
+        <style>
+            .team_2 {
+                background-image: url(../images/team__bg.jpg);
+            }
+
+            @media(-webkit-min-device-pixel-ratio: 1.25),
+            (min-resolution: 120dpi) {
+                .team_2 {
+                    background-image: url(../images/team_2_bg@x.jpg);
+                }
+            }
+        </style>
+        <div class="container px-xl-0">
+            <div class="row justify-content-left color-white">
+                <div class="col-xl-12 col-lg-10">
+                    <div class="mt-15 f-22 op-7 text-adaptive">
+                        <div data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
+                            <section>
+                                <div align="center">
+                                    <button class="button" onclick='func()'>View Code Here</button>
+                                    <button class="button"><a
+                                            href="https://colab.research.google.com/drive/1Js8qSSHv2viWro4MuRhBryfYDsp1oQOt"
+                                            target="blank">Run
+                                            Code Here</a> </button>
+                                    <br>
+                                    <br>
+                                </div>
+                                <div id="code" style="background-color:black; display: none;">
+                                    <div class="highlight">
+                                        <code>
+    <pre>
+        <font color="white">
+                from nilearn import datasets
+
+                dataset = datasets.fetch_atlas_harvard_oxford('cort-maxprob-thr25-2mm')
+                atlas_filename = dataset.maps
+                print('Atlas ROIs are located at: %s' % atlas_filename)
+
+                from nilearn import plotting
+
+                plotting.plot_roi(atlas_filename, title="Harvard Oxford atlas")
+                plotting.show()
+
+                from nilearn import datasets
+
+                motor_images = datasets.fetch_neurovault_motor_task()
+                stat_img = motor_images.images[0]
+
+                plotting.plot_glass_brain(stat_img, title='plot_glass_brain',black_bg=True, display_mode='xz', threshold=3)
+
+                plotting.plot_glass_brain(stat_img,
+                          title='plot_glass_brain with display_mode="lyrz"',
+                          display_mode='lyrz', threshold=3)
+
+                plotting.show()
+
+                from nilearn import datasets
+
+                motor_images = datasets.fetch_neurovault_motor_task()
+                stat_img = motor_images.images[0]
+
+                fsaverage = datasets.fetch_surf_fsaverage()
+
+                from nilearn import surface
+
+                texture = surface.vol_to_surf(stat_img, fsaverage.pial_right)
+
+                from nilearn import plotting
+
+                plotting.plot_surf_stat_map(fsaverage.infl_right, texture, hemi='right',
+                            title='Surface right hemisphere', colorbar=True,
+                            threshold=1., bg_map=fsaverage.sulc_right)
+
+                plotting.plot_glass_brain(stat_img, display_mode='r', plot_abs=False,
+                            title='Glass brain', threshold=2.)
+  
+                plotting.plot_stat_map(stat_img, display_mode='x', threshold=1.,
+                         cut_coords=range(0, 51, 10), title='Slices')
+        </font>
+    </pre>
+    </code>
+                                    </div>
+                                </div>
+                                <div align="center">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <th>
+                                                <p class="col-xl-12"><img width=100% height=100% id="image1"
+                                                        alt="OUTPUT"></p>
+                                            </th>
+                                            <th>
+                                                <p class="col-xl-12"><img width=100% height=100% id="image2"
+                                                        alt="OUTPUT"></p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p class="col-xl-12"><img width=100% height=100% id="image3"
+                                                        alt="OUTPUT"></p>
+                                            </th>
+                                            <th>
+                                                <p class="col-xl-12"><img width=100% height=100% id="image4"
+                                                        alt="OUTPUT"></p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p class="col-xl-12"><img width=100% height=100% id="image5"
+                                                        alt="OUTPUT"></p>
+                                            </th>
+                                            <th>
+                                                <p class="col-xl-12"><img width=100% height=100% id="image6"
+                                                        alt="OUTPUT"></p>
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function func() {
+            document.getElementById("image1").src = "miyawaki2008_reconstruction_0.png";
+            document.getElementById("image2").src = "miyawaki2008_reconstruction_1.png";
+            document.getElementById("image3").src = "miyawaki2008_reconstruction_2.png";
+            document.getElementById("image4").src = "miyawaki2008_reconstruction_3.png";
+            document.getElementById("image5").src = "miyawaki2008_reconstruction_4.png";
+            document.getElementById("image6").src = "miyawaki2008_reconstruction_5.png";
+            var div = document.getElementById("code");
+            div.style.display = "block";
+        }
+    </script>
+
+    <!-- Bootstrap 4.3.1 JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Fancybox 3 jQuery plugin JS (Open images and video in popup) -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <!-- Google maps JS API -->
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDP6Ex5S03nvKZJZSvGXsEAi3X_tFkua4U"></script>
+    <!-- Slick 1.8.1 jQuery plugin JS (Sliders) -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- AOS 2.3.4 jQuery plugin JS (Animations) -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- Maskedinput jQuery plugin JS (Masks for input fields) -->
+    <script src="../js/jquery.maskedinput.min.js"></script>
+    <!-- Startup 3 JS (Custom js for all blocks) -->
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>
