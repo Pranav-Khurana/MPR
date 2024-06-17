@@ -3,4 +3,4 @@ matplotlib==3.0.3
 kmapper==1.2.0
 dyneusr==0.3.4
 pandas==0.24.2
-scikit_learn==0.21.3
+scikit_learn==1.5.0
